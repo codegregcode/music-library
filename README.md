@@ -14,6 +14,8 @@ As it's very early on in development there is nothing to install or use! But I'l
 
 ## Application dependencies
 
+express, pg, postgres-migrations
+
 ## Support
 
 Thank you to all the support from tutors and fellow coursemates at Command Shift 🙌
