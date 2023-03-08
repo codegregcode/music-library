@@ -5,7 +5,6 @@ const app = require('../src/app');
 
 describe('create album', () => {
   let artistId;
-
   beforeEach(async () => {
     const { status, body } = await request(app)
       .post('/artists')
@@ -36,6 +35,7 @@ describe('create album', () => {
         } = await db.query(`SELECT * FROM Albums WHERE id = ${body.id}`);
         expect(albumsData.name).to.equal('Laminated Denim');
         expect(albumsData.date).to.equal(2022);
+        console.log(albumsData);
       });
     });
   });
