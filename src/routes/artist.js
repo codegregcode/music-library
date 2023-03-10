@@ -63,7 +63,7 @@ router.get('/', artistController.getArtists);
  *          description: Numeric ID of artist to find
  *      responses:
  *          200:
- *              description: id matches artist in database
+ *              description: ID matches artist in database
  *          404:
  *              description: no artist found
  */
