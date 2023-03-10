@@ -48,7 +48,7 @@ A project created as part of my studies with [Command Shift](https://www.command
 
 6. You should now be able to see a breakdown of all the routes and be able to interact with the API!
 
-   ![1678459896161](image/README/1678459896161.png)
+   ![1678484626902](image/README/1678484626902.png)
 
 ## Application dependencies
 
