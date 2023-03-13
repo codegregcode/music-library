@@ -13,7 +13,7 @@ describe('Delete Album', () => {
     artistsId = artistRows[0].id;
 
     const { rows } = await db.query(
-      'INSERT INTO Albums (name, date, artistId) VALUES( $1, $2, $3) RETURNING *',
+      'INSERT INTO Albums (name, year, artistId) VALUES( $1, $2, $3) RETURNING *',
       ['Hooked', 1989, artistsId]
     );
     album = rows[0];
@@ -30,7 +30,7 @@ describe('Delete Album', () => {
       expect(body).to.deep.equal({
         id: album.id,
         name: 'Hooked',
-        date: 1989,
+        year: 1989,
         artistid: artistsId,
       });
 

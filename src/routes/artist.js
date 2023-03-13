@@ -1,6 +1,5 @@
 const express = require('express');
 const artistController = require('../controllers/artist');
-const artistUpdater = require('../controllers/artist-update');
 
 const router = express.Router();
 
@@ -105,7 +104,7 @@ router.get('/:id', artistController.getArtist);
  *          404:
  *              description: The artist could not be found
  */
-router.put('/:id', artistUpdater.putArtist);
+router.put('/:id', artistController.putArtist);
 
 /**
  * @swagger
@@ -143,7 +142,7 @@ router.put('/:id', artistUpdater.putArtist);
  *          404:
  *              description: The artist could not be found
  */
-router.patch('/:id', artistUpdater.patchArtist);
+router.patch('/:id', artistController.patchArtist);
 
 /**
  * @swagger

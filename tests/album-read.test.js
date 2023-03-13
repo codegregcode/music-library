@@ -20,15 +20,15 @@ describe('Read Albums', () => {
 
     albumData = await Promise.all([
       db.query(
-        'INSERT INTO Albums (name, date, artistId) VALUES ($1, $2, $3) RETURNING *',
+        'INSERT INTO Albums (name, year, artistId) VALUES ($1, $2, $3) RETURNING *',
         ['Laminated Denim', 2022, artistId]
       ),
       db.query(
-        'INSERT INTO Albums (name, date, artistId) VALUES ($1, $2, $3) RETURNING *',
+        'INSERT INTO Albums (name, year, artistId) VALUES ($1, $2, $3) RETURNING *',
         ['Butterfly 3000', 2021, artistId]
       ),
       db.query(
-        'INSERT INTO Albums (name, date, artistId) VALUES ($1, $2, $3) RETURNING *',
+        'INSERT INTO Albums (name, year, artistId) VALUES ($1, $2, $3) RETURNING *',
         ['Made In Timeland', 2022, artistId]
       ),
     ]);

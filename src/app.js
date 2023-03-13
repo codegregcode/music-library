@@ -22,10 +22,6 @@ const options = {
 
 const swaggerSpecs = swaggerJsdoc(options);
 
-app.get('/', (req, res) => {
-  res.status(200).send('Hello World!ʕ•́ᴥ•̀ʔっ');
-});
-
 app.use('/artists', artistRouter);
 app.use('/artists', albumRouter);
 app.use('/albums', albumRouter);

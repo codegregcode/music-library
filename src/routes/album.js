@@ -1,6 +1,5 @@
 const express = require('express');
 const albumController = require('../controllers/album');
-const albumUpdater = require('../controllers/album-update');
 
 const router = express.Router();
 
@@ -10,7 +9,7 @@ const router = express.Router();
  *  post:
  *      tags:
  *          - Albums
- *      description: Enters new artist into database
+ *      description: Enters new album into database
  *      parameters:
  *        - in: path
  *          name: id
@@ -25,15 +24,15 @@ const router = express.Router();
  *              type: object
  *              required:
  *                - name
- *                - date
+ *                - year
  *              properties:
  *                  name:
  *                      type: string
- *                  date:
+ *                  year:
  *                      type: number
  *              example:
  *                  name: The Shape Of Jazz To Come
- *                  date: 1959
+ *                  year: 1959
  *      responses:
  *          201:
  *              description: Album successfully created
@@ -97,21 +96,21 @@ router.get('/:id', albumController.getAlbum);
  *              properties:
  *                  name:
  *                      type: string
- *                  date:
+ *                  year:
  *                      type: number
  *          required:
  *            - name
- *            - date
+ *            - year
  *          example:
  *            name: A Love Supreme
- *            date: 1964
+ *            year: 1964
  *      responses:
  *          200:
  *              description: The updated album
  *          404:
  *              description: The album could not be found
  */
-router.patch('/:id', albumUpdater.patchAlbum);
+router.patch('/:id', albumController.patchAlbum);
 
 /**
  * @swagger

@@ -1,7 +1,7 @@
 {
   "name": "music-library",
   "version": "1.0.0",
-  "description": "",
+  "description": "My API for adding Artists and Albums into a SQL database!",
   "main": "index.js",
   "scripts": {
     "migrate": "node scripts/migrate.js",
@@ -12,7 +12,7 @@
     "posttest": "node scripts/drop-database.js test"
   },
   "keywords": [],
-  "author": "",
+  "author": "Greg Cain",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.3.7",

@@ -14,7 +14,7 @@ describe('Update album', async () => {
     artistId = rows[0].id;
 
     const { rows: albumRows } = await db.query(
-      'INSERT INTO Albums (name, date, artistid) VALUES($1, $2, $3) RETURNING *',
+      'INSERT INTO Albums (name, year, artistid) VALUES($1, $2, $3) RETURNING *',
       ['Laminated Corduroy', 2022, artistId]
     );
     albumId = albumRows[0].id;
@@ -24,13 +24,13 @@ describe('Update album', async () => {
     it('updates the album and returns the updated record', async () => {
       const { status, body } = await request(app)
         .patch(`/albums/${albumId}`)
-        .send({ name: 'Laminated Denim', date: 2022 });
+        .send({ name: 'Laminated Denim', year: 2022 });
 
       expect(status).to.equal(200);
       expect(body).to.deep.equal({
         id: albumId,
         name: 'Laminated Denim',
-        date: 2022,
+        year: 2022,
         artistid: artistId,
       });
     });
