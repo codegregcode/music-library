@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: cgc-music-library
+    env: node
+    region: frankfurt
+    plan: free
+    buildCommand: npm ci
+    startCommand: npm run migrate && node index.js
+    envVars:
+      - key: PGDATABASE
+        fromDatabase:
+          name: cgc-music-library-database
+          property: database
+      - key: PGUSER
+        fromDatabase:
+          name: cgc-music-library-database
+          property: user
+      - key: PGPASSWORD
+        fromDatabase:
+          name: cgc-music-library-database
+          property: password
+      - key: PGHOST
+        fromDatabase:
+          name: cgc-music-library-database
+          property: host
+      - key: PGPORT
+        fromDatabase:
+          name: cgc-music-library-database
+          property: port
+
+databases:
+  - name: cgc-music-library-database
+    plan: free
+    region: frankfurt
+    databaseName: music_library_dev
+    ipAllowList: []
