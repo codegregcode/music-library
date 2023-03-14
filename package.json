@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "My API for adding Artists and Albums into a SQL database!",
   "engines": {
-    "node": ">=14 <15"
+    "node": ">=18"
   },
   "main": "index.js",
   "scripts": {
