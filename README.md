@@ -8,9 +8,13 @@ A project created as part of my studies with [Command Shift](https://www.command
 
   ~~\*note that there may be a delay as I'll be moving house during this project 🙃~~
 
-- Deploy on render
+- ~~Deploy on render~~
 
-## Installation and how to use
+## How to use
+
+The easiest way to use this API is to head over to: [https://cgc-music-library.onrender.com/swagger/](https://cgc-music-library.onrender.com/swagger/) and explore the different endpoints simply by clicking them! If you would like to set up your own API and database on your own machine please read 'Installation'
+
+## Installation
 
 1. Install docker onto your machine
 2. In your terminal: `<remove <> and change what's between them before entering command>`
