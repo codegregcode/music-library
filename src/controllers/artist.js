@@ -43,6 +43,24 @@ const getArtist = async (req, res) => {
   }
 };
 
+const getArtistsAlbums = async (req, res) => {
+  const { id } = req.params;
+  const { rows } = await db.query('SELECT * FROM Albums WHERE artistid = $1', [
+    id,
+  ]);
+
+  try {
+    if (!rows) {
+      return res
+        .status(404)
+        .json({ message: `albums don't exist for this artist` });
+    }
+    res.status(200).json(rows);
+  } catch (err) {
+    res.status(500).json(err.message);
+  }
+};
+
 const putArtist = async (req, res) => {
   const { id } = req.params;
   const { name, genre } = req.body;
@@ -119,6 +137,7 @@ module.exports = {
   createArtist,
   getArtists,
   getArtist,
+  getArtistsAlbums,
   putArtist,
   patchArtist,
   deleteArtist,

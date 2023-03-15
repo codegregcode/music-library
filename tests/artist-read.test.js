@@ -5,11 +5,12 @@ const app = require('../src/app');
 
 describe('Read Artists', () => {
   let artists;
+  let albums;
   beforeEach(async () => {
     const responses = await Promise.all([
       db.query(
         'INSERT INTO Artists (name, genre) VALUES( $1, $2) RETURNING *',
-        ['King Gizzard & The Lizard Wizard', 'rock']
+        ['Sly & The Family Stone', 'funk/soul']
       ),
       db.query(
         'INSERT INTO Artists (name, genre) VALUES( $1, $2) RETURNING *',
@@ -22,6 +23,19 @@ describe('Read Artists', () => {
     ]);
 
     artists = responses.map(({ rows }) => rows[0]);
+
+    const albumsData = await Promise.all([
+      db.query(
+        'INSERT INTO Albums (name, year, artistid) VALUES ($1, $2, $3) RETURNING *',
+        ['Theres a riot goin on', 1971, artists[0].id]
+      ),
+      db.query(
+        'INSERT INTO Albums (name, year, artistid) VALUES ($1, $2, $3) RETURNING *',
+        ['Fresh', 1973, artists[0].id]
+      ),
+    ]);
+
+    albums = albumsData.map(({ rows }) => rows[0]);
   });
 
   describe('GET /artists', () => {
@@ -38,6 +52,7 @@ describe('Read Artists', () => {
       });
     });
   });
+
   describe('GET /artists/{id}', () => {
     it('returns the artist with the correct id', async () => {
       const { status, body } = await request(app)
@@ -55,6 +70,17 @@ describe('Read Artists', () => {
 
       expect(status).to.equal(404);
       expect(body.message).to.equal('artist 999999999 does not exist');
+    });
+  });
+
+  describe('GET /artists/{id}/albums', () => {
+    it('returns all albums related to id of artist', async () => {
+      const { status, body } = await request(app)
+        .get(`/artists/${artists[0].id}/albums`)
+        .send();
+
+      expect(status).to.equal(200);
+      expect(body).to.deep.equal(albums);
     });
   });
 });

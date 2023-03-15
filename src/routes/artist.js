@@ -67,6 +67,28 @@ router.get('/', artistController.getArtists);
  *              description: no artist found
  */
 router.get('/:id', artistController.getArtist);
+/**
+ * @swagger
+ * /artists/{id}/albums:
+ *  get:
+ *      tags:
+ *          - Artists
+ *          - Albums
+ *      description: Get/finds all albums by artist using artist's id
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          schema:
+ *              type: number
+ *          required: true
+ *          description: Numeric ID of artist
+ *      responses:
+ *          200:
+ *              description: Albums found
+ *          404:
+ *              description: No albums found
+ */
+router.get('/:id/albums', artistController.getArtistsAlbums);
 
 /**
  * @swagger
