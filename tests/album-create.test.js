@@ -15,6 +15,7 @@ describe('Create album', () => {
 
     artist = responses.map(({ rows }) => rows[0]);
   });
+
   describe('POST', () => {
     it('creates an album in the database', async () => {
       const { status, body } = await request(app)
